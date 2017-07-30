@@ -1,0 +1,36 @@
+{
+  "name": "bhmb-ui",
+  "version": "1.0.0",
+  "description": "A UI extension for the Blockheads Messagebot",
+  "main": "bundle.js",
+  "module": "src/index.ts",
+  "types": "index.d.ts",
+  "peerDependencies": {
+    "blockheads-messagebot": "https://github.com/bibliofile/blockheads-messagebot#master"
+  },
+  "scripts": {
+    "prepare": "install-self-peers -- --ignore-scripts",
+    "build": "webpack --progress --config webpack.js"
+  },
+  "keywords": [
+    "Blockheads",
+    "MessageBot"
+  ],
+  "author": "Bibliofile <bibliofilegit@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@team-griffin/install-self-peers": "^1.1.1",
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
+    "bulma": "^0.5.0",
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2",
+    "node-sass": "^4.5.3",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.6",
+    "ts-loader": "^2.3.2",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1"
+  }
+}
