@@ -3,7 +3,6 @@
   "version": "1.0.0-a1",
   "description": "A UI extension for the Blockheads Messagebot",
   "main": "bundle.js",
-  "module": "src/index.ts",
   "types": "index.d.ts",
   "scripts": {
     "build": "rollup --config"
