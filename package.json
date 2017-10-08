@@ -2,7 +2,7 @@
   "name": "@bhmb/ui",
   "version": "1.0.0-a3",
   "description": "A UI extension for the Blockheads Messagebot",
-  "main": "bundle.js",
+  "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "build": "rollup --config"
@@ -12,7 +12,7 @@
     "MessageBot"
   ],
   "author": "Bibliofile <bibliofilegit@gmail.com>",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@bhmb/bot": "^7.0.0-a5",
     "bulma": "^0.5.3",

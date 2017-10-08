@@ -11,11 +11,11 @@ for (let name of ['index.d.ts', 'polyfill.d.ts', 'api.d.ts']) {
 export default {
     input: 'src/index.ts',
     output: {
-        file: 'bundle.js',
+        file: 'index.js',
         format: 'es'
     },
     plugins: [
-        sass({ output: 'bundle.css', options: { outputStyle: 'compressed' } }),
+        sass({ output: 'index.css', options: { outputStyle: 'compressed' } }),
         typescript(),
         string({ include: '**/*.html'})
     ],
