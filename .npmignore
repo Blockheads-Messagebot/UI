@@ -1,0 +1,7 @@
+.vscode
+.gitignore
+src
+tsconfig.json
+tslint.json
+typedoc.json
+rollup.config.js
