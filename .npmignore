@@ -1,5 +1,6 @@
 .vscode
 .gitignore
+.rpt2_cache
 src
 tsconfig.json
 tslint.json

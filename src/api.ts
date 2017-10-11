@@ -9,7 +9,8 @@ export default function(window: Window): UIExtensionExports {
         el.addEventListener('click', toggleMenu)
     }
 
-    let tabs = new Map<HTMLElement, HTMLElement>()
+    const tabs = new Map<HTMLElement, HTMLElement>()
+    const groups = new Map<string, HTMLElement>()
 
     const container = window.document.getElementById('container') as HTMLElement
     const menuContainer = window.document.querySelector('.nav-slider') as HTMLElement
@@ -17,7 +18,7 @@ export default function(window: Window): UIExtensionExports {
         let div = container.appendChild(window.document.createElement('div'))
 
         let parent = menuContainer
-        if (groupName) parent = parent.querySelector(`[data-group="${parent}"]`) as HTMLElement
+        if (groupName) parent = groups.get(groupName) as HTMLElement
 
         let nav = parent.appendChild(window.document.createElement('span'))
         nav.textContent = text
@@ -34,8 +35,6 @@ export default function(window: Window): UIExtensionExports {
             }
         }
     }
-
-    const groups = new Map<string, HTMLElement>()
 
     const addTabGroup = (text: string, groupName: string, parent?: string) => {
         let details = groups.get(groupName)
