@@ -2,26 +2,42 @@ import { UIExtensionExports, TemplateRule } from './'
 
 type Maybe<T> = T | null
 
-export default function(window: Window): UIExtensionExports {
-    const menuSlider = window.document.querySelector('.nav-slider-container .nav-slider') as Element
+export default function(): UIExtensionExports {
+    const menuSlider = document.querySelector('.nav-slider-container .nav-slider') as Element
     const toggleMenu = () => menuSlider.classList.toggle('is-active')
-    for (let el of window.document.querySelectorAll('.nav-slider-toggle')) {
+    for (let el of document.querySelectorAll('.nav-slider-toggle')) {
         el.addEventListener('click', toggleMenu)
     }
 
     const tabs = new Map<HTMLElement, HTMLElement>()
     const groups = new Map<string, HTMLElement>()
 
-    const container = window.document.getElementById('container') as HTMLElement
-    const menuContainer = window.document.querySelector('.nav-slider') as HTMLElement
+    const container = document.getElementById('container') as HTMLElement
+    const menuContainer = document.querySelector('.nav-slider') as HTMLElement
+
+    menuContainer.addEventListener('click', event => {
+        let nav = event.target as HTMLElement
+        let tab = tabs.get(nav)
+        if (tab) {
+            // Containers
+            Array.from(container.children).forEach(child => child.classList.remove('visible'))
+            tab.classList.add('visible')
+            // Nav items
+            Array.from(menuContainer.querySelectorAll('span.nav-item')).forEach(span => span.classList.remove('is-active'))
+            nav.classList.add('is-active')
+        }
+    })
+
+
     const addTab = (text: string, groupName?: string): HTMLDivElement => {
-        let div = container.appendChild(window.document.createElement('div'))
+        let div = container.appendChild(document.createElement('div'))
 
         let parent = menuContainer
         if (groupName) parent = groups.get(groupName) as HTMLElement
 
-        let nav = parent.appendChild(window.document.createElement('span'))
+        let nav = parent.appendChild(document.createElement('span'))
         nav.textContent = text
+        nav.classList.add('nav-item')
 
         tabs.set(nav, div)
         return div
@@ -45,8 +61,9 @@ export default function(window: Window): UIExtensionExports {
 
         let parentElement = menuContainer
         if (parent) parentElement = groups.get(parent) as HTMLElement
-        details = parentElement.appendChild(window.document.createElement('details'))
-        let summary = details.appendChild(window.document.createElement('summary'))
+        details = parentElement.appendChild(document.createElement('details'))
+        details.classList.add('nav-item')
+        let summary = details.appendChild(document.createElement('summary'))
         summary.textContent = text
         groups.set(groupName, details)
     }
@@ -86,10 +103,10 @@ export default function(window: Window): UIExtensionExports {
     }
 
     const buildTemplate = (template: string | HTMLTemplateElement, target: string | HTMLElement, rules: TemplateRule[]) => {
-        if (typeof template == 'string') template = window.document.querySelector(template) as HTMLTemplateElement
-        if (typeof target == 'string') target = window.document.querySelector(target) as HTMLElement
+        if (typeof template == 'string') template = document.querySelector(template) as HTMLTemplateElement
+        if (typeof target == 'string') target = document.querySelector(target) as HTMLElement
 
-        let parent = window.document.importNode(template.content, true)
+        let parent = document.importNode(template.content, true)
 
         for (let rule of rules) {
             let element = parent.querySelector(rule.selector) as HTMLElement
@@ -102,7 +119,7 @@ export default function(window: Window): UIExtensionExports {
     }
 
     const notify = (text: string, displayTime: number = 3) => {
-        let el = window.document.body.appendChild(window.document.createElement('div'))
+        let el = document.body.appendChild(document.createElement('div'))
         el.classList.add('bot-notification', 'is-active')
         el.textContent = text
         let timeouts = [
@@ -124,12 +141,12 @@ export default function(window: Window): UIExtensionExports {
         active: false,
         queue: []
     }
-    const modal = window.document.getElementById('modal') as HTMLElement
+    const modal = document.getElementById('modal') as HTMLElement
     const modalBody = modal.querySelector('.modal-card-body') as HTMLElement
     const modalFooter = modal.querySelector('.modal-card-foot') as HTMLElement
 
     const addButton = (button: string | { text: string, style?: string }) => {
-        let el = modalFooter.appendChild(window.document.createElement('a'))
+        let el = modalFooter.appendChild(document.createElement('a'))
         let styles = ['button']
         if (typeof button == 'object') {
             styles.push(button.style || '')
@@ -169,7 +186,7 @@ export default function(window: Window): UIExtensionExports {
     }
 
     const prompt = (text: string, callback?: (response: string) => void): void => {
-        let p = window.document.createElement('p')
+        let p = document.createElement('p')
         p.textContent = text
         alert(p.outerHTML + `<textarea class="textarea"></textarea>`, ['OK', 'Cancel'], () => {
             let el = modalBody.querySelector('textarea') as HTMLTextAreaElement

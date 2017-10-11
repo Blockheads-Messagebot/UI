@@ -107,5 +107,5 @@ MessageBot.registerExtension('ui', function (ex) {
     polyfill()
 
     // Expose api
-    ex.exports = api(window)
+    ex.exports = api()
 })
