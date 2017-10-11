@@ -45,7 +45,7 @@ export default function(window: Window): UIExtensionExports {
         }
 
         let parentElement = menuContainer
-        if (parent) parentElement = menuContainer.querySelector(`[data-group="${parent}"]`) as HTMLElement
+        if (parent) parentElement = groups.get(parent) as HTMLElement
         details = parentElement.appendChild(window.document.createElement('details'))
         let summary = details.appendChild(window.document.createElement('summary'))
         summary.textContent = text
