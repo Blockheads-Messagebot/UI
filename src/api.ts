@@ -116,6 +116,8 @@ export default function(): UIExtensionExports {
             }
             handleRule(rule, element)
         }
+
+        target.appendChild(parent)
     }
 
     const notify = (text: string, displayTime: number = 3) => {
