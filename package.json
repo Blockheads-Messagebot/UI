@@ -1,6 +1,6 @@
 {
   "name": "@bhmb/ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A UI extension for the Blockheads Messagebot",
   "main": "index.js",
   "types": "index.d.ts",
