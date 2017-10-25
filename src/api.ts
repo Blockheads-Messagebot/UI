@@ -156,6 +156,7 @@ export default function(): UIExtensionExports {
         } else {
             el.textContent = button
         }
+        el.classList.add(...styles)
     }
     const showAlert = () => {
         alertInstance.active = true
@@ -192,7 +193,7 @@ export default function(): UIExtensionExports {
         p.textContent = text
         alert(p.outerHTML + `<textarea class="textarea"></textarea>`, ['OK', 'Cancel'], () => {
             let el = modalBody.querySelector('textarea') as HTMLTextAreaElement
-            if (callback) callback(el.textContent || '')
+            if (callback) callback(el.value || '')
         })
     }
 
