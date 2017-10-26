@@ -75,6 +75,7 @@ export default function(): UIExtensionExports {
             // Unless someone has been purposely messing with the page, this is a safe assertion
             removeTab(tabs.get(child) as HTMLDivElement)
         }
+        group.remove()
     }
 
     const handleRule = (rule: TemplateRule, element: HTMLElement) => {
@@ -151,7 +152,7 @@ export default function(): UIExtensionExports {
         let el = modalFooter.appendChild(document.createElement('a'))
         let styles = ['button']
         if (typeof button == 'object') {
-            styles.push(button.style || '')
+            if (button.style) styles.push(button.style)
             el.textContent = button.text
         } else {
             el.textContent = button
