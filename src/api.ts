@@ -47,6 +47,7 @@ export default function(): UIExtensionExports {
             if (div == content) {
                 div.remove()
                 nav.remove()
+                tabs.delete(nav)
                 return
             }
         }
@@ -75,6 +76,7 @@ export default function(): UIExtensionExports {
             // Unless someone has been purposely messing with the page, this is a safe assertion
             removeTab(tabs.get(child) as HTMLDivElement)
         }
+        groups.delete(groupName)
         group.remove()
     }
 
