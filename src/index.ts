@@ -103,7 +103,7 @@ MessageBot.registerExtension('ui', function (ex) {
     document.head.querySelectorAll('link').forEach(el => el.remove())
     let style = document.head.appendChild(document.createElement('link'))
     style.rel = 'stylesheet'
-    style.href = 'https://gitcdn.xyz/repo/Blockheads-Messagebot/UI/master/index.css'
+    style.href = 'https://gitcdn.xyz/cdn/Blockheads-Messagebot/UI/master/index.css'
     polyfill()
 
     // Expose api

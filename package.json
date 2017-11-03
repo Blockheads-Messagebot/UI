@@ -1,6 +1,6 @@
 {
   "name": "@bhmb/ui",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A UI extension for the Blockheads Messagebot",
   "main": "index.js",
   "types": "index.d.ts",
@@ -15,13 +15,13 @@
   "author": "Bibliofile <bibliofilegit@gmail.com>",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@bhmb/bot": "^7.0.0-a7",
-    "bulma": "^0.5.3",
+    "@bhmb/bot": "^7.0.6",
+    "bulma": "^0.6.0",
     "rollup": "^0.50.0",
     "rollup-plugin-sass": "^0.5.3",
     "rollup-plugin-string": "^2.0.2",
-    "rollup-plugin-typescript2": "^0.7.0",
-    "tslint": "^5.5.0",
-    "typescript": "^2.5.3"
+    "rollup-plugin-typescript2": "^0.8.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
   }
 }
