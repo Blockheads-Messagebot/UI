@@ -100,6 +100,11 @@ export default function(): UIExtensionExports {
             if (child) child.selected = true
         }
 
+        if (element instanceof HTMLInputElement && 'checked' in rule) {
+            element.checked = rule.checked
+            blacklist.push('checked')
+        }
+
         Object.keys(rule)
             .filter(key => !blacklist.includes(key))
             .forEach(key => element.setAttribute(key, rule[key]))
