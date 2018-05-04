@@ -1,8 +1,3 @@
-// Why doesn't this already exist in TypeScript?
-interface HTMLDetailsElement extends HTMLElement {
-    open: boolean
-}
-
 export default function polyfill() {
     if (!('open' in document.createElement('details'))) {
         let style = document.createElement('style')

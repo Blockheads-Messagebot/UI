@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2015",
         "lib": [
             "dom",
             "es7",
@@ -8,7 +8,7 @@
             "scripthost"
         ],
         "moduleResolution": "node",
-        "module": "commonjs",
+        "module": "es2015",
         "downlevelIteration": true,
         "declaration": true,
         "removeComments": false,
@@ -17,5 +17,8 @@
         "sourceMap": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true
-    }
+    },
+    "include": [
+        "src/*.ts"
+    ]
 }
