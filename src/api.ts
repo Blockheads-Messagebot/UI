@@ -102,7 +102,13 @@ export default function(): UIExtensionExports {
 
         Object.keys(rule)
             .filter(key => !blacklist.includes(key))
-            .forEach(key => element.setAttribute(key, rule[key]))
+            .forEach(key => {
+                if (key in element) {
+                    (element as any)[key] = rule[key]
+                } else {
+                    element.setAttribute(key, rule[key])
+                }
+            })
     }
 
     const buildTemplate = (template: string | HTMLTemplateElement, target: string | HTMLElement, rules: TemplateRule[]) => {
