@@ -1,6 +1,6 @@
 import sass from 'rollup-plugin-sass'
 import typescript from 'rollup-plugin-typescript2'
-import string from 'rollup-plugin-string'
+import { string } from 'rollup-plugin-string'
 
 export default {
     input: 'src/index.ts',
